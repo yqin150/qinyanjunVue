@@ -1,0 +1,34 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+
+      },
+      methods:{
+        add:function(b){
+          alert(1);
+        },
+      }
+    })
+
+  }
+
+  </script>
+
+</head>
+<body>
+
+<div id="box">
+  <!-- 键盘事件keydown -->
+  <input type="text" name=""  @keydown.enter="add(1)">
+    <input type="text" name=""  @keydown.up="add(1)">
+</div>
+
+</body>
+</html>

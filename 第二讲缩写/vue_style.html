@@ -1,0 +1,32 @@
+<html>
+<head>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:{
+          color:'red',
+          backgroundColor:'pink',
+        }
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+
+<div id="box">
+  <!-- 数组格式 -->
+  <!-- <p :style="[c,b]">this is simple</p> -->
+  <!-- json格式 -->
+  <p :style="a">this is a json format</p>
+</div>
+
+</body>
+</html>

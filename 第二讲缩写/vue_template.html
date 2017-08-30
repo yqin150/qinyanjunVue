@@ -1,0 +1,32 @@
+<html>
+<head>
+
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+        msg:'this is a test',
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+
+<div id="box">
+  <input type="text" name="" value="" v-model="msg">
+  <br>
+  {{msg}}
+  <!-- 想在的要求是上面的更新，下面的不更新 -->
+  <br>
+  <p v-once>{{msg}}</p>
+
+</div>
+
+</body>
+</html>

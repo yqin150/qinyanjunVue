@@ -1,0 +1,34 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+
+      },
+      methods:{
+        add:function(b){
+          alert(b);
+        },
+      }
+    })
+
+  }
+
+  </script>
+
+</head>
+<body>
+
+<div id="box">
+  <!-- 事件的默认行为，比如鼠标右击的时候绑定了一个弹窗事件，但我们知道浏览器本身也有一个右击菜单的事件 -->
+    <input type="button" name="" value="按钮" @contextmenu.prevent="add(1)">
+
+</div>
+
+</body>
+</html>

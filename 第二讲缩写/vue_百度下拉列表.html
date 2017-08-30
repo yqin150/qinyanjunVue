@@ -1,0 +1,51 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.2.0/vue-resource.js"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+        mydata:[],
+        t1:''
+      },
+      methods:{
+        get:function(){
+          this.$http.jsonp('http://suggestion.baidu.com/su',{
+            //就是su?接的那个字母
+            wd:'a'
+          },{
+            //就是callback的名字
+            jsonp:'cb'
+          }).then(function(){
+            alert('成功了');
+          },function(){
+            alert('失败了');
+
+          });
+        }
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+
+<div id="box">
+  <!-- 实现的主要功能是点击按钮的时候，活动etext里面的内容 -->
+
+<!-- <input type="text" name="" value="" v-model="t1" @keyup="get()">
+<ul v-for="(value,index) in mydata">
+  <li>{{value}}</li>
+</ul>
+<p v-show="mydata.length==0">暂无数据</p> -->
+<button type="button" name="button"  @click="get()">按钮</button>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+
+      },
+      methods:{
+        add:function(b){
+          alert(b);
+
+        },
+        add2:function(a){
+          alert(a);
+        }
+      }
+    })
+
+  }
+
+  </script>
+
+</head>
+<body>
+
+<div id="box">
+  <!-- 事件冒泡就是单击一个事件，该事件会同样的事件也会被祖先所触发 -->
+  <div @click="add2(2)">
+    <input type="button" name="" value="按钮" @click.stop="add(1)">
+  </div>
+</div>
+
+</body>
+</html>

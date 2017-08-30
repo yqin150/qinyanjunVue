@@ -1,0 +1,41 @@
+<html>
+<head>
+  <style>
+  .r{
+    color: red;
+  }
+  .bg{
+    background: pink;
+  }
+
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+
+  window.onload = function(){
+
+    var c = new Vue({
+      el:'#box',
+      data:{
+          json:{
+            r:true,
+            bg:false
+          }
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+
+<div id="box">
+  <!-- <p :class="[red,bg]">我是文字</p> -->
+  <!-- <p :class="{r:true,bg:true}">text text text......</p> -->
+  <!--加上数据的类  -->
+  <!-- <p :class="{r:a,bg:b}">this is some tex</p> -->
+  <p :class="json">this is simple</p>
+</div>
+
+</body>
+</html>
