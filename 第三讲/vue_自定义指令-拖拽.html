@@ -1,0 +1,59 @@
+<html>
+<head>
+  <style>
+  .box1{
+    width: 100px;
+    height: 100px;
+    background: pink;
+    position: absolute;
+  }
+  </style>
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  Vue.directive('drag',function(){
+    console.log(this);
+    var oDiv=this.el;
+    oDiv.onmousedown=function(ev){
+      //获得鼠标移动的位置-div的left值就是要移动的距离
+      var disX=ev.clientX-oDiv.offsetLeft;
+      var disY=ev.clientY-oDiv.offsetTop;
+      console.log(disX);
+      console.log(disY);
+
+      //开始移动的时候最近一次的鼠标移动的距离-上一次的移动距离
+      document.onmousemove=function(ev){
+        var l=ev.clientX-disX;
+        var t=ev.clientY-disY;
+        console.log("--"+l);
+        console.log("--"+t);
+        oDiv.style.left=l+'px';
+        oDiv.style.top=t+'px';
+      };
+
+      //鼠标松开的时候，清空
+      document.onmouseup=function(){
+        document.onmousemove=null;
+        document.onmouseup=null;
+      };
+    };
+
+  });
+
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        json:{
+          box1:true
+        }
+      },
+    })
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <div :class="json"v-drag></div>
+  </div>
+</body>
+</html>

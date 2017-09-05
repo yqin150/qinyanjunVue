@@ -1,0 +1,34 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      components:{
+        'my-aaa':{
+          data(){
+            return {
+              msg:'welcome Vue'
+            }
+          },//模板里面的数据必须是函数形式
+          methods:{
+            change(){
+              this.msg = 'changed';
+            },
+          },
+          template:'<h2 @click="change">标题2-》{{msg}}</h2>'
+        }
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <my-aaa></my-aaa>
+  </div>
+</body>
+</html>

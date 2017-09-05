@@ -1,0 +1,55 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        bSign:true,
+      },
+      methods:{
+        // toggle:function(){
+        //   alert(1);
+        // }
+        toggle(){
+        console.log(1);
+        //console.log(this);
+        console.log(this.bSign);//改变这个对象下面的值
+        this.bSign = !this.bSign;
+
+        }
+      }
+    })
+
+  }
+  </script>
+  <style>
+    #div1{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+    .fade-transition{
+      /*这里面放入的主要是需要动画的属性，比如宽/高。*/
+      transition: 1s all ease;
+    }
+    .fade-enter{
+      /*主要是进入动画的属性*/
+      opacity: 0;
+    }
+    .fade-leave{
+      opacity: 0;
+      transform: translateX(200px);
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <!-- 下面的这个方法就是toggle一个div -->
+    <input type="button"  value="按钮" @click="toggle()">
+    <div id="div1" v-show="bSign" transition="fade"></div>
+  </div>
+</body>
+</html>

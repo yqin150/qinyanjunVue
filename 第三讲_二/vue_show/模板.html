@@ -1,0 +1,41 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      components:{
+        'my-aaa':{
+          data(){
+            return {
+              msg:'welcome Vue',
+              arr:['apple','banana','orange']
+            }
+          },//模板里面的数据必须是函数形式
+          methods:{
+            change(){
+              this.msg = 'changed';
+            },
+          },
+          template:'#aaa'
+        }
+      }
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <my-aaa></my-aaa>
+  </div>
+  <template id="aaa">
+    <h1>标题1{{msg}}</h1>
+    <ul>
+      <li v-for="(item,index) in arr">{{index}}</li>
+    </ul>
+  </template>
+</body>
+</html>

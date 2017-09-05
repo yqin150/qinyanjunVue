@@ -1,0 +1,26 @@
+<html>
+<head>
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  Vue.directive('red',function(){
+    console.log(this);
+    this.el.style.color="red";
+
+  });
+
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        msg:'a',
+      },
+    })
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <span v-red>gggg</span>
+  </div>
+</body>
+</html>

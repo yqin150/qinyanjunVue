@@ -1,0 +1,27 @@
+<html>
+<head>
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+
+    var vm = new Vue({
+      el:'#box',
+      components:{
+        'my-aaa':{
+          template:'<h4>到达</h4>',
+        }
+      }
+    })
+
+  }
+  </script>
+
+</head>
+<body>
+  <div id="box">
+    <my-aaa></my-aaa>
+    <!-- 下面的这个方法就是toggle一个div -->
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+
+    Vue.component('aaa',{
+      // data:function(){},
+      data(){
+        return {
+          msg:'i was title'
+        };
+      },
+      template:'<h3>{{msg}}</h3>',
+    });
+    var vm = new Vue({
+      el:'#box',
+      data:{
+
+      },
+      methods:{
+
+      }
+    })
+
+  }
+  </script>
+  <style>
+    #div1{
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <aaa></aaa>
+    <!-- 下面的这个方法就是toggle一个div -->
+
+  </div>
+</body>
+</html>

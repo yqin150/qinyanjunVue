@@ -1,0 +1,34 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:'bbb'
+      },
+      components:{
+        'aaa':{
+          template:'<h2>I am aaa component</h2>'
+        },
+        'bbb':{
+          template:'<h2>I am bbb component</h2>'
+        }
+      }
+
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <input type="button" name="" value="aaa组件" @click="a='aaa'">
+    <input type="button" name="" value="bbb组件"  @click="a='bbb'">
+    <component :is="a"></component>
+
+  </div>
+</body>
+</html>

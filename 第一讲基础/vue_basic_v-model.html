@@ -1,0 +1,42 @@
+<html>
+<head>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+  //目的就是在把数据绑定在box里面
+  window.onload = function(){
+    /*uve是一个封装好的对象，通过构造函数封装的，我们再使用的时候，Vue构造哦函数使用提供模板的，里面
+    有this关键字写好的属性和方法，new命令的作用就是执行构造函数，返回一个实例对象
+    1:把数据绑到哪个元素上
+    2：数据是什么
+    */
+    var c = new Vue({
+      el:'#box',
+      data:{
+        msg:'welcome vue',
+        arr:[1,2,3],
+        json:{a:'apple',b:'banana',c:'orange'}
+      }
+    })
+
+  }
+
+  </script>
+
+</head>
+<body>
+  <!--本省有一个用处就是可以用来书写数据在博表单-->
+
+<!-- <input type="text" name="" value="bbb"> -->
+<div id="box">
+  <input type="text" v-model="msg">
+  <br>
+  {{msg}}
+  <br>
+  {{arr}}
+  <br>
+  {{json}}
+
+</div>
+
+</body>
+</html>

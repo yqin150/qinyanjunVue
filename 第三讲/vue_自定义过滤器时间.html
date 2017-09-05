@@ -1,0 +1,26 @@
+<html>
+<head>
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    Vue.filter('date',function(input){
+      //alert(input);
+      var oDate = new Date(input);
+      console.log(oDate);
+      return oDate.getFullYear()+'-'+(oDate.getMonth()+1)+'-'+oDate.getDate()+' '+oDate.getHours()+':'+oDate.getMinutes()+":"+oDate.getSeconds();
+    })
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:Date.now()
+      },
+    })
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    {{a | date}}
+  </div>
+</body>
+</html>

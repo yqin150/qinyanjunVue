@@ -1,0 +1,125 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+  //我们需要左的一件事情就是点击按钮的时候box消失
+  window.onload = function(){
+    /*uve是一个封装好的对象，通过构造函数封装的，我们再使用的时候，Vue构造哦函数使用提供模板的，里面
+    有this关键字写好的属性和方法，new命令的作用就是执行构造函数，返回一个实例对象
+    1:把数据绑到哪个元素上
+    2：数据是什么
+    4:暂无数据一行出来的时机是当我的表格暂时没有内容的时候==数据长度为0
+    5：删除全部出来的时机是数据长度!=0;
+    6:每次添加完后记得吧输入框清空
+    */
+    var c = new Vue({
+      el:'#box',
+      data:{
+        mydata:[],
+        username:'',
+        age:'',
+        nowIndex:-100
+          // {"name":'red',"age":23},
+          // {"name":'blue',"age":24},
+          // {"name":'pink',"age":25}],
+      },
+      methods:{
+        add:function(){
+          this.mydata.push({
+            "name":this.username,
+            "age":this.age
+          });
+          this.username='';
+          this.age='';
+        },
+        deleteMsg:function(n){
+              if(n==-2){
+                this.mydata=[];
+              }else{
+                alert(n);
+                this.mydata.splice(n,1);
+              }
+
+        }
+      }
+    })
+
+  }
+
+  </script>
+
+</head>
+<body>
+<div class="container" id="box">
+
+  <form role="form">
+    <div class="form-group">
+      <label for="username">用户名：</label>
+      <input type="text" id="username" class="form-control" placeholder="请输入用户名" v-model="username">
+    </div>
+    <div class="form-group">
+      <label for="username">年  龄：</label>
+      <input type="text" id="age" class="form-control" placeholder="请输入年龄" v-model="age">
+    </div>
+    <div class="form-group">
+      <input type="button" name="" value="添加" class="btn btn-primary" v-on:click="add()">
+        <input type="reset" name="" value="重置" class="btn btn-danger">
+    </div>
+  </form>
+  <h2 class="text-danger text-center">用户信息表</h2>
+<br>
+
+  <table class="table table-bordered table-hover">
+    <tr class="text-danger">
+      <th class="text-center">序号</th>
+      <th class="text-center">名字</th>
+      <th class="text-center">年龄</th>
+        <th class="text-center">操作</th>
+    </tr>
+    <tr v-for="(item,index) in mydata">
+      <td class="text-center">{{index+1}}</td>
+      <td class="text-center">{{item.name}}</td>
+      <td class="text-center">{{item.age}}</td>
+        <td class="text-center">
+          <!-- 点击当前的按钮，去到当前的索引值，然后利用索引值去删除掉这个数据 -->
+          <button type="button" name="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" v-on:click="nowIndex=index">删除</button>
+        </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-center" v-show="mydata.length!=0">
+         <button type="button" name="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" v-on:click="nowIndex=-2">删除全部</button>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" class="text-center text-muted" v-show="mydata.length==0">
+        <p>暂无数据·····</p>
+      </td>
+    </tr>
+  </table>
+<!--model框-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> 你确认要删除吗？</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-right">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal" v-on:click="deleteMsg(nowIndex)">确认</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>
