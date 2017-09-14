@@ -1,0 +1,40 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:'bbb'
+      },
+      components:{
+        'my-aaa':{
+          template:'#aaa'
+        },
+      }
+
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <my-aaa>
+      <ul>
+        <li>1111</li>
+        <li>2222</li>
+        <li>33333</li>
+      </ul>
+    </my-aaa>
+  </div>
+  <template id="aaa">
+    <h1>i am a h1</h1>
+    <slot>这是默认的情况</slot>
+    <p>welcome vue</p>
+
+  </template>
+</body>
+</html>

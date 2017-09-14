@@ -1,0 +1,47 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:'aaa'
+      },
+      components:{
+        'my-aaa':{
+          data(){
+            return {
+              msg2:111,
+              msg:'我是父组件的数据'
+            }
+          },
+          template:'#aaa',
+          components:{
+            'bbb':{
+              props:{
+                'm':String,
+                'm2':Number,
+              },
+              template:'<h3>我是子组件->{{m}}</h3><br>{{m2}}'
+            }
+          }
+        },
+      }
+
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <my-aaa></my-aaa>
+  </div>
+  <template id="aaa">
+    <h2>I am aaa component->{{msg}}</h2>
+    <bbb :m="msg" :m2="msg2"></bbb>
+  </template>
+</body>
+</html>

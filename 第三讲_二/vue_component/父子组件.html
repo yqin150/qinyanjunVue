@@ -1,0 +1,38 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:'aaa'
+      },
+      components:{
+        'aaa':{
+          data(){
+            return {
+              msg:'this is father component data'
+            }
+          },
+          template:'<h2>I am aaa component->{{msg}}</h2><bbb></bbb>',
+          components:{
+            'bbb':{
+              template:'<h3>I am h3 component</h3>'
+            }
+          }
+        },
+      }
+
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <aaa></aaa>
+  </div>
+</body>
+</html>

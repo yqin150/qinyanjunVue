@@ -1,0 +1,50 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script>
+  window.onload = function(){
+    //第三步准备组件home
+    var Home = {
+      template:'<h3>我是主页</h3>'
+    };
+    var User= {
+      template:`
+      <h3>我是用户信息</h3>
+      <ul>
+      <li><router-link to="/user">用户</router-link></li>
+      </ul>
+      `
+    };
+    //第四步配置路由
+    const routes=[
+      {path:'/home',component:Home},
+      {path:'/user',component:User},
+      {path:'*',redirect:'/home'}
+    ];
+    //第五步生成路由的实例
+    const router = new VueRouter({
+      routes // （缩写）相当于 routes: routes
+    });
+    //第六步挂到Vue上面
+    var c = new Vue({
+      el:'#box',
+      router, // （缩写）相当于 router: router
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <div>
+      <router-link to="/home">主页</router-link>
+      <router-link to="/user">用户</router-link>
+    </div>
+    <div>
+      <router-view></router-view>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet" href="https://daneden.github.io/animate.css/"> -->
+  <script src="https://v1.vuejs.org/js/vue.js"></script>
+  <script>
+  window.onload = function(){
+    var c = new Vue({
+      el:'#box',
+      data:{
+        a:'aaa'
+      },
+      components:{
+        'my-aaa':{
+          data(){
+            return {
+              msg:'11111'
+            }
+          },
+          template:'#aaa',
+          methods:{
+            get(m){
+              //alert(m);
+              console.log(this.msg);
+              this.msg=m;
+            },
+          },
+          components:{
+            'my-bbb':{
+              data(){
+                return {
+                  m:'我是子组件的数据',
+                }
+              },
+              template:'#bbb',
+              methods:{
+                send(){
+                  console.log(this.m);
+                  console.log(this.$emit);
+                  this.$emit('child-data',this.m);
+                },
+              }
+
+            }
+          }
+        },
+      }
+
+    })
+
+  }
+  </script>
+</head>
+<body>
+  <div id="box">
+    <my-aaa></my-aaa>
+  </div>
+  <template id="aaa">
+    <span>我是父组件->{{msg}}</span>
+    <input type="button" name="" value="按钮">
+    <my-bbb @child-data="get"></my-bbb>
+  </template>
+  <template id="bbb">
+    <h3>{{m}}-></h3>
+    <!--第一步我们想要实现的就是点击按钮的时候把子组件的数据发送给父组件  -->
+    <input type="button" name="" value="send" @click="send()">
+  </template>
+</body>
+</html>
